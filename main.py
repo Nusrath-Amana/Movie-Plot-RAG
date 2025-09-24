@@ -21,7 +21,7 @@ os.environ["GOOGLE_API_KEY"] = api_key
 loader = CSVLoader(file_path="wiki_movie_plots_deduped.csv", encoding="utf-8")
 docs = loader.load()[:500]  
 
-# Keep only Plot text and Title metadata
+# Simplify metadata
 for doc in docs:
     doc.metadata = {"title": doc.metadata.get("Title", "")}
 
@@ -33,7 +33,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 chunks = text_splitter.split_documents(docs)
 
-# Embeddings + FAISS vector store
+# Embeddings and FAISS vector store
 embed_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vector_store = FAISS.from_documents(chunks, embed_model)
 
@@ -59,7 +59,7 @@ Return ONLY the JSON object, nothing else.
 
 PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 
-# Memory for multi-turn conversation
+# Memory for multi turn conversation
 memory = ConversationBufferMemory(
     memory_key="chat_history",
     return_messages=True,
