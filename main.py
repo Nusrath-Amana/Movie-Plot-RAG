@@ -85,13 +85,15 @@ def parse_llm_response(response_text):
             json_str = response_text[start_idx:end_idx]
             return json.loads(json_str)
         else:
-            # Fallback: if no JSON found, return as answer
+            # if no JSON found
             return {"answer": response_text.strip(), "reasoning": "Response parsing failed"}
     except json.JSONDecodeError:
         return {"answer": response_text.strip(), "reasoning": "Invalid JSON format in response"}
     
+
+    
 # Interactive terminal loop
-print("Mini-RAG Movie Plot QA (type 'exit' to quit)")
+print("Mini-RAG Movie Plot (type 'exit' to quit)")
 
 while True:
 
