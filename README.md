@@ -37,9 +37,3 @@
 
 ---
 
-## 🧪 Example Queries
-
-- "How does the temperature in Room A change by hour of the day?"
-- "Which room had the highest temperature reading last week?"
-- "How does CO₂ vary by day of the week?"
-- "List the rooms from hottest to coolest by daily average temperature"
