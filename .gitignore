@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+
+
+# Environment variables
+**/.env
+
+# VSCode and PyCharm settings
+.vscode/
+.idea/
+
+# Test files
+agent.py
+
+
+
